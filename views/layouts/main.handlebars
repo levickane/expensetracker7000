@@ -19,11 +19,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="d-flex">
-             {{#if loggedIn}}
+             {{#if logged_in}}
             <button id="logout" class="btn-no-style">Logout</button>
-            {{else}}
-            <a href="/login">Login</a>
             {{/if}}
+            {{#unless logged_in}}
+            <a href="/login" class="btn-no-style">Login</a>
+            {{/unless}}
         </form>
       </div>
     </div>
