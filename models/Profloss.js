@@ -21,7 +21,7 @@ Profloss.init(
       allowNull: false,
     },
     date:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     userid:{

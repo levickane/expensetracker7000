@@ -18,7 +18,7 @@ const seedDatabase = async () => {
       ...category
     });
   }
-  for (const profloss of prolossData){
+  for (const profloss of proflossData){
       await Profloss.create({
           ...profloss
       })
