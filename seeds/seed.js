@@ -12,12 +12,6 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-
-  for (const category of categoryData) {
-    await Category.create({
-      ...category
-    });
-  }
   for (const profloss of proflossData){
       await Profloss.create({
           ...profloss
