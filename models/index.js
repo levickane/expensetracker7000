@@ -1,13 +1,10 @@
+const Profloss = require('./Profloss');
 const User = require('./User');
-const Project = require('./Project');
+User.hasMany(Profloss);
+Profloss.belongsTo(User,{foreignKey:'id'});
+// Profloss.belongsTo(Category,{foreignKey:'id'});
+// Category.hasMany(Profloss);
 
-User.hasMany(Project, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
-});
-
-Project.belongsTo(User, {
-  foreignKey: 'user_id'
-});
-
-module.exports = { User, Project };
+module.exports = {
+Profloss,User
+};

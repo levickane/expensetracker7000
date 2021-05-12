@@ -1,0 +1,23 @@
+[
+  {
+    "name": "big load of groceries",
+    "amount": "55.60",
+    "date": "",
+    "userid": 1,
+    "categoryid": 1
+  },
+  {
+    "name": "Steakhouse",
+    "amount": "75.68",
+    "date": "",
+    "userid": 1,
+    "categoryid": 2
+  },
+  {
+    "name": "parking",
+    "amount": "20.50",
+    "date": "",
+    "userid": 1,
+    "categoryid": 3
+  }
+]

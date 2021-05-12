@@ -1,9 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
+const dataTypes = require('sequelize/lib/data-types');
 const sequelize = require('../config/connection');
 
-class Project extends Model {}
+class Profloss extends Model {}
 
-Project.init(
+Profloss.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -15,33 +16,35 @@ Project.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    amount: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+    },
+    date:{
       type: DataTypes.STRING,
-    },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    needed_funding: {
-      type: DataTypes.FLOAT,
       allowNull: false,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
+    userid:{
+      type: dataTypes.INTEGER,
+      references:{
+        model:'User',
         key: 'id',
-      },
+      }
     },
+    // categoryid:{
+    //   type: dataTypes.INTEGER,
+    //   references:{
+    //     model:'Category',
+    //     key: 'id',
+    //   }
+    // }
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'profloss'
   }
 );
-
-module.exports = Project;
+module.exports = Profloss;

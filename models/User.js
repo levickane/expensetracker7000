@@ -14,11 +14,11 @@ User.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
@@ -34,7 +34,8 @@ User.init(
       validate: {
         len: [8],
       },
-    },
+    }
+    
   },
   {
     hooks: {
