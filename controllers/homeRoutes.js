@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     // const projects = projectData.map((project) => project.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
+    res.render('profile', { 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
@@ -52,13 +52,50 @@ router.get('/profile', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{model: Profloss}],
     });
-
+    const proflossData = await Profloss.findAll({
+        where:{
+            userid: 1
+            // userData.dataValues.id
+        }
+    })
+    const cleaneduparray = proflossData.map((item)=> item.get({plain:true}))
+    console.log(cleaneduparray);
     const user = userData.get({ plain: true });
 
     res.render('profile', {
+      cleaneduparray,
       ...user,
       logged_in: true
     });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/profiledata', withAuth, async (req, res) => {
+    console.log('We are hitting the profile route');
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{model: Profloss}],
+    });
+    const proflossData = await Profloss.findAll({
+        where:{
+            userid: 1
+            // userData.dataValues.id
+        }
+    })
+    const profiles = proflossData.map((item)=> item.get({plain:true}))
+    console.log(profiles);
+    const user = userData.get({ plain: true });
+
+    // res.render('profile', {
+    //   cleaneduparray,
+    //   ...user,
+    //   logged_in: true
+    // });
+    res.json(profiles);
   } catch (err) {
     res.status(500).json(err);
   }
