@@ -3,8 +3,6 @@ const { Profloss } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/newexpense', withAuth, async (req, res) => {
-    console.log(req.body);
-    console.log("*******************",req.session.userid);
   try {
     const newExpense = await Profloss.create({
       ...req.body,

@@ -58,9 +58,11 @@
   </thead>
   <tbody>
       {{#each cleaneduparray as |clean|}}
+      <tr>
       <td>{{clean.name}}</td>
       <td>{{clean.amount}}</td>
       <td>{{clean.date}}</td>
+      </tr>
       {{/each}}
   </tbody>
     </table>
@@ -73,20 +75,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
+
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 
 <script>
     $.ajax({
         url:"/profiledata",
 method:"GET"    }).then(function(data){
-console.log(data);
 const names = []
 const amounts =[]
 for(let i=0; i<data.length; i++){
 names.push(data[i].name)
 amounts.push(data[i].amount)
 }
-console.log(names)
     
 const chartData = {
     Names:names,

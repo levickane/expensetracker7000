@@ -45,7 +45,6 @@ router.get('/', async (req, res) => {
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
-    console.log('We are hitting the profile route');
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.userid, {
@@ -59,7 +58,6 @@ router.get('/profile', withAuth, async (req, res) => {
         }
     })
     const cleaneduparray = proflossData.map((item)=> item.get({plain:true}))
-    console.log(cleaneduparray);
     const user = userData.get({ plain: true });
 
     res.render('profile', {
@@ -73,7 +71,6 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 router.get('/profiledata', withAuth, async (req, res) => {
-    console.log('We are hitting the profile route');
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.userid, {
@@ -82,12 +79,11 @@ router.get('/profiledata', withAuth, async (req, res) => {
     });
     const proflossData = await Profloss.findAll({
         where:{
-            userid: 1
+            userid: userData.dataValues.id
             // userData.dataValues.id
         }
     })
     const profiles = proflossData.map((item)=> item.get({plain:true}))
-    console.log(profiles);
     const user = userData.get({ plain: true });
 
     // res.render('profile', {
