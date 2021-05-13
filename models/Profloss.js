@@ -27,7 +27,7 @@ Profloss.init(
     userid:{
       type: dataTypes.INTEGER,
       references:{
-        model:'User',
+        model:'user',
         key: 'id',
       }
     },
