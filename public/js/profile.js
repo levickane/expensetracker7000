@@ -4,9 +4,9 @@ const newFormHandler = async (event) => {
   const name = document.querySelector('#item-name').value.trim();
   const amount = document.querySelector('#item-amount').value.trim();
   const date = document.querySelector('#item-date').value.trim();
-
+    console.log(name, amount, date);
   if (name && amount && date) {
-    const response = await fetch(`/api/newexpense`, {
+    const response = await fetch(`/api/expenses/newexpense`, {
       method: 'POST',
       body: JSON.stringify({ name, amount, date }),
       headers: {
@@ -39,8 +39,8 @@ const delButtonHandler = async (event) => {
 };
 
 document
-  .querySelector('.new-expense-form')
-  .addEventListener('submit', newFormHandler);
+  .querySelector('#submitBtn1')
+  .addEventListener('click', newFormHandler);
 
 // document
 //   .querySelector('.project-list')
