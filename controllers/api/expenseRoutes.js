@@ -2,11 +2,11 @@ const router = require('express').Router();
 const { Profloss } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/newexpense', withAuth, async (req, res) => {
   try {
     const newExpense = await Profloss.create({
       ...req.body,
-      user_id: req.session.user_id,
+      userid: req.session.userid,
     });
 
     res.status(200).json(newExpense);

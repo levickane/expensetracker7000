@@ -31,13 +31,6 @@ Profloss.init(
         key: 'id',
       }
     },
-    // categoryid:{
-    //   type: dataTypes.INTEGER,
-    //   references:{
-    //     model:'Category',
-    //     key: 'id',
-    //   }
-    // }
   },
   {
     sequelize,

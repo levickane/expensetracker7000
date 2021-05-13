@@ -54,7 +54,7 @@ router.get('/profile', withAuth, async (req, res) => {
     });
     const proflossData = await Profloss.findAll({
         where:{
-            userid: 1
+            userId: 1
             // userData.dataValues.id
         }
     })
