@@ -54,8 +54,8 @@ router.get('/profile', withAuth, async (req, res) => {
     });
     const proflossData = await Profloss.findAll({
         where:{
-            userId: 1
-            // userData.dataValues.id
+            userid: userData.dataValues.id
+
         }
     })
     const cleaneduparray = proflossData.map((item)=> item.get({plain:true}))
@@ -63,7 +63,7 @@ router.get('/profile', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
 
     res.render('profile', {
-      ...cleaneduparray,
+      cleaneduparray,
       ...user,
       logged_in: true
     });
