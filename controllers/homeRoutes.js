@@ -48,7 +48,7 @@ router.get('/profile', withAuth, async (req, res) => {
     console.log('We are hitting the profile route');
   try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
+    const userData = await User.findByPk(req.session.userid, {
       attributes: { exclude: ['password'] },
       include: [{model: Profloss}],
     });
@@ -63,7 +63,7 @@ router.get('/profile', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
 
     res.render('profile', {
-      cleaneduparray,
+      ...cleaneduparray,
       ...user,
       logged_in: true
     });
@@ -76,7 +76,7 @@ router.get('/profiledata', withAuth, async (req, res) => {
     console.log('We are hitting the profile route');
   try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
+    const userData = await User.findByPk(req.session.userid, {
       attributes: { exclude: ['password'] },
       include: [{model: Profloss}],
     });

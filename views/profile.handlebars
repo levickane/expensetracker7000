@@ -24,18 +24,20 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Expenses</h5>
+            <form  class="new-expense-form">
+                <h5 class="modal-title" id="staticBackdropLabel">Expenses</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <input type="text"id="item-name" placeholder="Item Name">
-          <input type="text"id="item-amount"placeholder="Item amount">
-          <input class="datepicker" data-date-format="mm/dd/yyyy"placeholder="Item Date">
+          <input type="text"id="item-name" placeholder="item-name">
+          <input type="text"id="item-amount"placeholder="item-amount">
+          <input class="datepicker" data-date-format="mm/dd/yyyy"placeholder="item-date" id="item-date">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn1">Submit</button>
         </div>
+            </form>
       </div>
     </div>
   </div>
@@ -46,22 +48,26 @@
       <canvas id="myChart" width="200" height="200"></canvas>
       </div>
       <div class="col-6">
-        {{#if expenses.length}}
+        
   <div class="col-md-6 project-list">
     <h3>Expenses:</h3>
-
-    {{#each expenses as |expense|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/project/{{expense.id}}">{{expense.username}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{expense.id}}">DELETE</button>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-  {{/if}}
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Item Name</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each cleaneduparray as |clean|}}
+      <td>{{clean.name}}</td>
+      <td>{{clean.amount}}</td>
+      <td>{{clean.date}}</td>
+      {{/each}}
+  </tbody>
+    </table>
+    
 </div>
       </div>
     </div>
