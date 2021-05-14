@@ -12,11 +12,11 @@
   </div>
   <!-- Expense tracker area -->
   <!-- Button trigger modal -->
-  <div class="row">
-      <button type="button" class="btn btn-secondary col-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <div class="row d-flex justify-content-between">
+      <button type="button" class="btn btn-secondary col-12 col-md-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Add expense
   </button>
-  <h2 class="col-8">Running Total: $-<span id="running-total"></span></h2>
+  <h2 class="col-12 col-md-4">Running Total: $-<span id="running-total"></span></h2>
   </div>
 
   <!-- Modal -->
@@ -44,22 +44,22 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-6">
+  
+    <div class="row my-2">
+      <div class=" col-12 col-md-6">
         
       <canvas id="myChart" width="200" height="200"></canvas>
       </div>
-      <div class="col-6">
+    <div class="col-12 col-md-6">
         
-  <div class="col-md-6 project-list">
+  <div class="col-12 project-list">
     <h3>Expenses:</h3>
-    <table class="table">
-  <thead>
+        <table class="table table-responsive table-hover">
+  <thead >
     <tr>
-      <th scope="col">Item Name</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Date</th>
+      <th >Item Name</th>
+      <th >Amount</th>
+      <th >Date</th>
     </tr>
   </thead>
   <tbody>
@@ -72,12 +72,11 @@
       </tr>
       {{/each}}
   </tbody>
-    </table>
-    
+    </table>    
 </div>
       </div>
     </div>
-  </div>
+  
   <!-- Expense tracker area -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
