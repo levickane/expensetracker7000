@@ -17,11 +17,11 @@ Profloss.init(
       allowNull: false,
     },
     amount: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,2),
       allowNull: false,
     },
     date:{
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     userid:{
