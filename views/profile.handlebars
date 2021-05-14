@@ -91,23 +91,26 @@
 $.ajax({
     url:"/profiledata",
     method:"GET"    }).then(function(data){
+    const dateAmounts = []
     const dates = []
-    const amounts =[]
+    const amounts = []
     for(let i=0; i<data.length; i++){
+        dateAmounts.push({"date":moment(data[i].date, 'YYYY-MM-DD').unix(), "amount":parseInt(data[i].amount)})
     dates.push(moment(data[i].date, 'YYYY-MM-DD').unix())
-    amounts.push(data[i].amount)
+    amounts.push(parseInt(data[i].amount))
     }
-    console.log(dates)
-    const sortedDates = dates.sort((a, b)=>{
-        return a - b
+    dateAmounts.sort((a,b)=>{
+        return a.date - b.date
     })
-    const newSortedDateArray = []
-    for(let i=0; i<sortedDates.length; i++){
-        newSortedDateArray.push(moment.unix(sortedDates[i]).format('YYYY-MM-DD'))
+    const updatedDates = []
+    const updatedAmounts =[]
+    for(let i=0; i<dateAmounts.length; i++){
+        updatedDates.push(moment.unix(dateAmounts[i].date).format('YYYY-MM-DD')) 
+        updatedAmounts.push(dateAmounts[i].amount)
     }
     const chartData = {
-        Dates: newSortedDateArray,
-        Amounts:amounts
+        Dates: updatedDates,
+        Amounts: updatedAmounts
     };
 
     let lineChart = $('#myChart').html();
