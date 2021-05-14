@@ -92,12 +92,8 @@ $.ajax({
     url:"/profiledata",
     method:"GET"    }).then(function(data){
     const dateAmounts = []
-    const dates = []
-    const amounts = []
     for(let i=0; i<data.length; i++){
-        dateAmounts.push({"date":moment(data[i].date, 'YYYY-MM-DD').unix(), "amount":parseInt(data[i].amount)})
-    dates.push(moment(data[i].date, 'YYYY-MM-DD').unix())
-    amounts.push(parseInt(data[i].amount))
+    dateAmounts.push({"date":moment(data[i].date, 'YYYY-MM-DD').unix(), "amount":parseInt(data[i].amount)})
     }
     dateAmounts.sort((a,b)=>{
         return a.date - b.date
@@ -135,8 +131,8 @@ $.ajax({
     } 
     });
     let runningTotal = 0
-    for(let i=0; i<amounts.length; i++){
-        let newnumber = parseInt(amounts[i])
+    for(let i=0; i<dateAmounts.length; i++){
+        let newnumber = dateAmounts[i].amount
         runningTotal+= newnumber
     }
     $('#running-total').html(runningTotal)
