@@ -85,20 +85,28 @@
 {{!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script> --}}
 <!-- Bootstrap Date-Picker Plugin -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 <script>
+    moment().format(); 
 $.ajax({
     url:"/profiledata",
     method:"GET"    }).then(function(data){
     const dates = []
     const amounts =[]
     for(let i=0; i<data.length; i++){
-    dates.push(data[i].date)
+    dates.push(moment(data[i].date, 'YYYY-MM-DD').unix())
     amounts.push(data[i].amount)
     }
-        
+    console.log(dates)
+    const sortedDates = dates.sort((a, b)=>{
+        return a - b
+    })
+    const newSortedDateArray = []
+    for(let i=0; i<sortedDates.length; i++){
+        newSortedDateArray.push(moment.unix(sortedDates[i]).format('YYYY-MM-DD'))
+    }
     const chartData = {
-        Dates:dates,
+        Dates: newSortedDateArray,
         Amounts:amounts
     };
 
