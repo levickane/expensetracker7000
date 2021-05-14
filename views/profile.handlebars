@@ -12,10 +12,13 @@
   </div>
   <!-- Expense tracker area -->
   <!-- Button trigger modal -->
-<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <div class="row">
+      <button type="button" class="btn btn-secondary col-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Add expense
   </button>
-  
+  <h2 class="col-8">Running Total: $-<span id="running-total"></span></h2>
+  </div>
+
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -85,45 +88,51 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 
 <script>
-    $.ajax({
-        url:"/profiledata",
-method:"GET"    }).then(function(data){
-const names = []
-const amounts =[]
-for(let i=0; i<data.length; i++){
-names.push(data[i].name)
-amounts.push(data[i].amount)
-}
-    
-const chartData = {
-    Names:names,
-    Amounts:amounts
-};
+$.ajax({
+    url:"/profiledata",
+    method:"GET"    }).then(function(data){
+    const dates = []
+    const amounts =[]
+    for(let i=0; i<data.length; i++){
+    dates.push(data[i].date)
+    amounts.push(data[i].amount)
+    }
+        
+    const chartData = {
+        Dates:dates,
+        Amounts:amounts
+    };
 
-let lineChart = $('#myChart').html();
-let lineChartScript = Handlebars.compile(lineChart);
-let linehtml = lineChartScript(chartData);
-$(document.body).append(linehtml);
+    let lineChart = $('#myChart').html();
+    let lineChartScript = Handlebars.compile(lineChart);
+    let linehtml = lineChartScript(chartData);
+    $(document.body).append(linehtml);
 
-var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-   type: 'line',
-   data: {
-      labels:  chartData.Names, 
-      datasets: [
-        {
-          label: "Expense",
-          fill: false,
-          lineTension: 0,
-          borderColor: "#0d6efd",
-          data:  chartData.Amounts 
-        }
-      ]
-   } 
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels:  chartData.Dates, 
+        datasets: [
+            {
+            label: "Expense",
+            fill: true,
+            lineTension: 0,
+            borderColor: "red",
+            data:  chartData.Amounts 
+            }
+        ]
+    } 
+    });
+    console.log(amounts)
+    let runningTotal = 0
+    for(let i=0; i<amounts.length; i++){
+        let newnumber = parseInt(amounts[i])
+        console.log(newnumber)
+        runningTotal+= newnumber
+    }
+    $('#running-total').html(runningTotal)
+    console.log("hello",runningTotal)
 });
-});
-
-
-
 </script>
 <script src="./js/profile.js"></script>
