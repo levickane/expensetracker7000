@@ -4,10 +4,10 @@
   </div>
 </div>
 
-<div class="jumbotron jumbotron-fluid nav-style">
-    <div class="container">
+<div class="jumbotron jumbotron-fluid nav-style rounded">
+    <div class="container text-white">
       <h1 class="display-2">Expense Tracker 7000</h1>
-      <p class="lead">Start Saving Money The Smart Way!</p>
+      <p class="lead ">Start Saving Money The Smart Way!</p>
     </div>
   </div>
   <!-- Expense tracker area -->
@@ -82,10 +82,7 @@
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <!--  jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-
-
+{{!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script> --}}
 <!-- Bootstrap Date-Picker Plugin -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 
@@ -126,15 +123,12 @@ $.ajax({
         ]
     } 
     });
-    console.log(amounts)
     let runningTotal = 0
     for(let i=0; i<amounts.length; i++){
         let newnumber = parseInt(amounts[i])
-        console.log(newnumber)
         runningTotal+= newnumber
     }
     $('#running-total').html(runningTotal)
-    console.log("hello",runningTotal)
 });
 </script>
 <script src="./js/profile.js"></script>
