@@ -12,6 +12,7 @@
     saving! 
 ## Technologies
     We built this application with Node.js, Express.js for the API, 
+    Chart.js for a visual representation of the data
     Handlebars as the template engine and MySQL, Sequelize for the database.
 ## Story
     - User arrives on the landing page.
@@ -26,9 +27,9 @@
       on the graph and details of the expenses as well. 
     - Log out and see you next time!
 ## Demo
-<img src="./assets/images/" style="width: 750px">
-<img src="./assets/images/" style="width: 750px">
-<img src="./assets/images/" style="width: 750px">
+<img src="./public/images/loginpage.png" style="width: 750px">
+<img src="./public/images/profilepage.png" style="width: 750px">
+<img src="./public/images/additem.png" style="width: 750px">
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
