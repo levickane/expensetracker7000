@@ -25,14 +25,14 @@ const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/projects/${id}`, {
+    const response = await fetch(`/api/expenses/${id}`, {
       method: 'DELETE',
     });
 
     if (response.ok) {
       document.location.replace('/profile');
     } else {
-      alert('Failed to delete project');
+      alert('Failed to delete item');
     }
   }
 };
@@ -41,6 +41,6 @@ document
   .querySelector('#submitBtn1')
   .addEventListener('click', newFormHandler);
 
-// document
-//   .querySelector('.project-list')
-//   .addEventListener('click', delButtonHandler);
+document
+  .querySelector('.deleteBtn')
+  .addEventListener('click', delButtonHandler);
