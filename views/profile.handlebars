@@ -20,15 +20,15 @@
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
+          <form  class="new-expense-form"></form>
         <div class="modal-header">
-            <form  class="new-expense-form">
-                <h5 class="modal-title" id="staticBackdropLabel">Expenses</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title col-9" id="staticBackdropLabel">Expenses</h5>
+          <button type="button" class="btn-close col-1" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <input type="text"id="item-name" placeholder="item-name">
-          <input type="text"id="item-amount"placeholder="item-amount">
-          <input type="text" id="item-date">
+          <input class="col-12 my-1" type="text"id="item-name" placeholder="item-name">
+          <input class="col-12 my-1" type="text"id="item-amount"placeholder="item-amount">
+          <input class="col-12 my-1" type="text" id="item-date" placeholder="date">
           {{!-- <input class="datepicker" data-date-format="mm/dd/yyyy"placeholder="item-date" id="item-date"> --}}
         </div>
         <div class="modal-footer">
