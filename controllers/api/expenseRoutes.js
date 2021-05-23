@@ -6,7 +6,6 @@ router.post('/newexpense', withAuth, async (req, res) => {
   try {
     const newExpense = await Profloss.create({
       ...req.body,
-      // user_id: req.sessi on.userid,
       userid: req.session.userid,
     });
 
